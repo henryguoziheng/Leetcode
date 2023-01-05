@@ -8,3 +8,4 @@ class Solution:
             for j in range(len(temp)):
                 if nums[i] + temp[j] == target:
                     return [i, j+1]
+
