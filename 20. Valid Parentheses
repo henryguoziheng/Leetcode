@@ -1,0 +1,30 @@
+class Solution:
+
+    def isValid(self, s: str) -> bool:
+        def equalP(s1, s2):
+            if (s1 == '(' and s2 == ')') or (s1 == '[' and s2 == ']') or (s1 == '{' and s2 == '}'):
+                return True
+            else:
+                return False
+        
+        if s[0] == ')' or s[0] == ']' or s[0] == '}':
+            return False
+        else:
+            temp = []
+            count = 0
+            for i in range(len(s)):
+                if s[i] == '(' or s[i] == '[' or s[i] == '{':
+                    temp.append(s[i])
+                elif s[i] == ')' or s[i] == ']' or s[i] == '}':
+                    if not temp:
+                        return False
+                    else:
+                        if equalP(temp[i-1-count], s[i]):
+                            temp.pop()
+                            count += 2
+                        else:
+                            return False
+            if not temp:
+                return True
+            else:
+                return False
