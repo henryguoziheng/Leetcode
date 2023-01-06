@@ -1,0 +1,17 @@
+class Solution:
+    
+    def longestCommonPrefix(self, strs: List[str]) -> str:
+        
+        def commonPre(str1, str2):
+            count = 0
+            for index, item in enumerate(list(zip(str1, str2))):
+                if item[0] == item[1]:
+                    count += 1
+                if item[0] != item[1]:
+                    break
+            return str1[0:count]
+        
+        preStr = strs[0]
+        for word in strs:
+            preStr = commonPre(preStr, word)
+        return preStr
