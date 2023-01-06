@@ -1,0 +1,6 @@
+class Solution:
+    def mySqrt(self, x: int) -> int:
+        sqrt = x
+        while (sqrt**2 - x) > 0.5:
+            sqrt = sqrt - (sqrt**2 - x)/(2*sqrt)
+        return int(sqrt)
