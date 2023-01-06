@@ -1,0 +1,38 @@
+class Solution:
+    def romanToInt(self, s: str) -> int:
+        count = 0
+        for index, letter in enumerate(s):
+            if letter == 'M':
+                count += 1000
+            if letter == 'C':
+                if index != (len(s) - 1):
+                    if s[index + 1] == 'D' or s[index + 1] == 'M':
+                        count -= 100
+                    if s[index + 1] != 'D' and s[index + 1] != 'M':
+                        count += 100
+                else:
+                    count += 100
+            if letter == 'D':
+                count += 500
+            if letter == 'L':
+                count += 50
+            if letter == 'X':
+                if index != (len(s) - 1):
+                    if s[index + 1] == 'L' or s[index + 1] == 'C':
+                        count -= 10
+                    if s[index + 1] != 'L' and s[index + 1] != 'C':
+                        count += 10
+                else:
+                    count += 10
+            if letter == 'V':
+                count += 5 
+            if letter == 'I':
+                if index != (len(s) - 1):
+                    if s[index + 1] == 'V' or s[index + 1] == 'X':
+                        count -= 1
+                    if s[index + 1] != 'V' and s[index + 1] != 'X':
+                        count += 1
+                else:
+                    count += 1
+            
+        return count
