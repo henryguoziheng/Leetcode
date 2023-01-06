@@ -1,0 +1,18 @@
+class Solution:
+    def reverse(self, x: int) -> int:
+        s = str(x)
+        if s[0] == '-':
+            s1 = s[1:]
+            value = -1 * int(s1[::-1])
+            bValue = '{0:b}'.format(value)
+            if len(bValue)-1 < 32:
+                return value
+            else:
+                return 0
+        else:
+            value = int(s[::-1])
+            bValue = '{0:b}'.format(value)
+            if len(bValue) < 32:
+                return value
+            else:
+                return 0 
