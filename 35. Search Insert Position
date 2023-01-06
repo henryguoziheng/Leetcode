@@ -1,0 +1,15 @@
+class Solution:
+    def searchInsert(self, nums: List[int], target: int) -> int:
+        i = 0
+        temp = []
+        maxLen = len(nums)
+
+        while 0 <= i <= maxLen-1:
+            if nums[i] < target:
+                temp.append(nums[i])
+                i += 1
+            elif nums[i] == target:
+                return len(temp)
+            elif nums[i] > target:
+                return len(temp)
+        return i
