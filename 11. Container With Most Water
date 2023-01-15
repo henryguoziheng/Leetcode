@@ -1,0 +1,29 @@
+# Brute Force
+class Solution:
+    def maxArea(self, height: List[int]) -> int:
+
+        maxList = []
+        for i in range(len(height)):
+            localMax = 0
+            for j in range(i+1, len(height)):
+                if (j - i) * min(height[i], height[j]) > localMax:
+                    localMax = (j - i) * min(height[i], height[j])
+            maxList.append(localMax)
+        return max(maxList)
+
+# Correct solution
+class Solution:
+    def maxArea(self, height: List[int]) -> int:
+
+        i = 0
+        j = len(height) - 1
+
+        maxArea = 0
+        while i < j:
+            area = (j-i) * min(height[i], height[j])
+            maxArea = max(area, maxArea)
+            if height[i] < height[j]:
+                i += 1
+            else:
+                j -= 1
+        return maxArea
