@@ -1,0 +1,26 @@
+class Solution:
+
+    def spiralOrder(self, matrix: List[List[int]]) -> List[int]:
+        def peel(matrix):
+            numList = []
+            newMat = []
+            if len(matrix) == 1:
+                numList = matrix[0]
+                return newMat, numList
+            elif len(matrix[0]) == 1:
+                numList = [kk[0] for kk in matrix]
+                return newMat, numList            
+            else:
+                for i in range(len(matrix)):
+                    if (i != 0) and (i != len(matrix) - 1):
+                        temp = matrix[i][1:-1]
+                        newMat.append(temp)
+                
+                numList = numList + matrix[0] + [l[-1] for l in matrix][1:] + matrix[-1][::-1][1:] + [l[0] for l in matrix][::-1][1:-1]
+                return newMat, numList
+
+        numList = []
+        while any(matrix) == True:
+            matrix, tempList = peel(matrix)
+            numList = numList + tempList
+        return numList
