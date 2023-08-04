@@ -1,0 +1,11 @@
+class Solution:
+    def uniquePaths(self, m: int, n: int) -> int:
+        def factorial(kk):
+            temp = 1
+            for i in range(2, kk +1):
+                temp = temp * i
+            return temp
+
+        t = m-1 + n-1
+
+        return int(factorial(t) / (factorial(m-1) * factorial(t-(m-1))))
