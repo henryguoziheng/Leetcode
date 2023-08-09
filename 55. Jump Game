@@ -1,0 +1,13 @@
+class Solution:
+    def canJump(self, nums: List[int]) -> bool:
+        endPoint = len(nums) - 1
+        for i in range(len(nums)-1)[::-1]:
+            if nums[i] >= endPoint - i:
+                endPoint = i
+            else:
+                pass
+        
+        if endPoint == 0:
+            return True
+        else:
+            return False
