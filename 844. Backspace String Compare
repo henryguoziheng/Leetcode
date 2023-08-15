@@ -1,0 +1,16 @@
+class Solution:
+    def backspaceCompare(self, s: str, t: str) -> bool:
+        
+        def update_string(st):
+            update_s = []
+            for letter in st:
+                if letter != '#':
+                    update_s.append(letter)
+                else:
+                    update_s = update_s[:-1]
+            return update_s
+
+        if update_string(s) == update_string(t):
+            return 1
+        else:
+            return 0
