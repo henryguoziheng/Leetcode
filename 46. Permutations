@@ -1,0 +1,14 @@
+class Solution:
+    def permute(self, nums: List[int]) -> List[List[int]]:
+        def per(nums2):
+            if len(nums2) == 0:
+                return [[]]
+            else:
+                permute_without_first = per(nums2[1:])
+                permute_with_first = []
+                for l in permute_without_first:
+                    for i in range(len(nums2)):
+                        temp = l[:i] + [nums2[0]] + l[i:]
+                        permute_with_first.append(temp)
+                return permute_with_first
+        return per(nums)
