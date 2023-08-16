@@ -1,0 +1,15 @@
+class Solution:
+    def longestPalindrome(self, s: str) -> str:
+
+        maxRange = 0
+        tempInd = [0, 0]
+        tempRange = 0
+        for i in range(len(s)):
+            for j in range(i + maxRange, len(s)+1):
+                if s[i:j] == s[i:j][::-1]:
+                    tempRange = j-i
+                    if tempRange > maxRange:
+                        maxRange = tempRange
+                        tempInd[0] = i
+                        tempInd[1] = j
+        return s[tempInd[0]:tempInd[1]]
