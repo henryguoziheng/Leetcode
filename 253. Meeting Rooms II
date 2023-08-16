@@ -1,0 +1,9 @@
+class Solution:
+    def minMeetingRooms(self, intervals: List[List[int]]) -> int:
+        rooms = [sorted(intervals)[0][1]]
+        for kk in sorted(intervals)[1:]: # need google
+            if kk[0] < min(rooms):
+                rooms.append(kk[1])
+            else:
+                rooms[rooms.index(min(rooms))] = kk[1]
+        return len(rooms)
