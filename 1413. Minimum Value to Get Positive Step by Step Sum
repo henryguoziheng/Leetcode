@@ -1,0 +1,11 @@
+class Solution:
+    def minStartValue(self, nums: List[int]) -> int:
+        minVal = max(nums)
+        count = 0
+        for i in range(len(nums)):
+            count += nums[i]
+            minVal = min(minVal, count)
+        if minVal <= 0:
+            return -minVal + 1
+        else:
+            return 1
