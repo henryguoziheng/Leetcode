@@ -1,0 +1,21 @@
+from functools import lru_cache
+
+class Solution:
+    def coinChange(self, coins: List[int], amount: int) -> int:
+        @lru_cache(None)
+        def dp(val):
+            if val == 0:
+                return 0
+            if val < 0:
+                return -1
+            else:
+                minChange = val + 1
+                for coin in coins:
+                    temp = dp(val - coin)
+                    if temp != -1:
+                        minChange = min(minChange, temp + 1)
+                if minChange != val + 1:
+                    return minChange
+                else:
+                    return -1
+        return dp(amount)
