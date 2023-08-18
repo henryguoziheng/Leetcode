@@ -1,0 +1,27 @@
+class Solution:
+    def numIslands(self, grid: List[List[str]]) -> int:
+        cols, rows = len(grid[0]), len(grid)
+        islandNum = 0
+        visit = set()
+
+        def bfs(r, c):
+            directions = [[0, 1], [0, -1], [-1, 0], [1, 0]]
+            visit.add((r, c))
+            nodeList = [(r, c)]
+            while nodeList:
+                r_loc, c_loc = nodeList[-1][0], nodeList[-1][1]
+                nodeList.pop()
+                for d in directions:
+                    r = r_loc + d[0]
+                    c = c_loc + d[1]
+                    if 0 <= r < rows and 0 <= c < cols and (r, c) not in visit and grid[r][c] == '1':
+                        visit.add((r, c))
+                        nodeList.append((r, c))
+
+        for i in range(rows):
+            for j in range(cols):
+                if grid[i][j] == '1' and (i, j) not in visit:
+                    islandNum += 1
+                    bfs(i, j)
+        
+        return islandNum 
