@@ -1,0 +1,35 @@
+class Solution:
+    def trap(self, height: List[int]) -> int:
+        maxInd = []
+        for i in range(len(height)):
+            if height[i] == max(height):
+                maxInd.append(i)
+
+        def getRunningMax(myList, indexList):
+            left = min(indexList)
+            right = max(indexList)
+            newL = []
+            maxVal = 0
+            for i in range(0, left):
+                if myList[i] >= maxVal:
+                    newL.append(myList[i])
+                    maxVal = myList[i]
+                if myList[i] < maxVal:
+                    newL.append(maxVal)
+            
+            for i in range(left, right):
+                newL.append(max(height))
+
+            newL2 = []
+            myListReverse = myList[::-1]
+            maxVal2 = 0
+            for i in range(0, len(height) - right):
+                if myListReverse[i] >= maxVal2:
+                    newL2.append(myListReverse[i])
+                    maxVal2 = myListReverse[i]
+                if myListReverse[i] < maxVal2:
+                    newL2.append(maxVal2)
+            
+            return newL + newL2[::-1]
+
+        return sum(getRunningMax(height, maxInd)) - sum(height)
