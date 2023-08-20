@@ -1,0 +1,11 @@
+class Solution:
+    def isPowerOfThree(self, n: int) -> bool:
+        powerList = [1]
+        if n == 1:
+            return True
+        else:
+            while powerList[-1] < n:
+                powerList.append(powerList[-1] * 3)
+                if powerList[-1] == n:
+                    return True
+            return False
