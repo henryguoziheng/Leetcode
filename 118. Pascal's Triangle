@@ -1,0 +1,16 @@
+from math import factorial
+
+class Solution:
+    def generate(self, numRows: int) -> List[List[int]]:
+        def C(n, k):
+            return int(factorial(n) / (factorial(k) * factorial(n-k)))
+        
+        def getTri(num):
+            if num == 1:
+                return [[1]]
+            else:
+                l = []
+                for i in range(num):
+                    l.append(C(num - 1, i))
+                return getTri(num - 1) + [l]
+        return getTri(numRows)
