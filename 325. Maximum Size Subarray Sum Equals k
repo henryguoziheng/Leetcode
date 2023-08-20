@@ -1,0 +1,17 @@
+from collections import defaultdict
+
+class Solution:
+    def maxSubArrayLen(self, nums: List[int], k: int) -> int:
+        myDict = defaultdict(int)
+        cumSum = 0
+        ans = 0
+        for i in range(len(nums)):
+            cumSum += nums[i]
+            if cumSum == k:
+                ans = i + 1
+            if cumSum - k in myDict:
+                ans = max(ans, i - myDict[cumSum - k])
+            if cumSum not in myDict:
+                myDict[cumSum] = i
+            #myDict[cumSum] = min(myDict[cumSum], i)
+        return ans
