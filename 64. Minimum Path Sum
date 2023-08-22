@@ -1,0 +1,17 @@
+from functools import lru_cache
+class Solution:
+    def minPathSum(self, grid: List[List[int]]) -> int:
+        
+        nrow = len(grid)
+        ncol = len(grid[0])
+        
+        @lru_cache(None)
+        def dp(row, col):
+            if row == 0 and col == 0:
+                return grid[row][col]
+            elif row < 0 or col < 0:
+                return 100000
+            #elif row in range(nrow + 1) and col in range(ncol + 1):
+            return min(dp(row - 1, col), dp(row, col - 1)) + grid[row][col]
+        
+        return dp(nrow - 1, ncol - 1)
