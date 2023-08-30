@@ -1,0 +1,12 @@
+class Solution:
+    def removeDuplicates(self, s: str, k: int) -> str:
+        ans = ''
+        for i in range(len(s)):
+            if len(ans) < k - 1:
+                ans += s[i]
+            else:
+                if ans[-(k-1):].count(s[i]) == k - 1:
+                    ans = ans[0 : -(k-1)]
+                else:
+                    ans += s[i]
+        return ans
