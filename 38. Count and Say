@@ -1,0 +1,30 @@
+class Solution:
+    def countAndSay(self, n: int) -> str:
+        def countNum(x):
+            # x is a string of int
+            valueCount = [x[0]]
+            numberCount = []
+            count = 1
+            for i in range(1, len(x)):
+                if x[i] == x[i-1]:
+                    count += 1
+                else:
+                    numberCount.append(count)
+                    count = 1
+                    valueCount.append(x[i])
+            numberCount.append(count)
+        
+            s = ''
+            for i in range(len(valueCount)):
+                s += str(numberCount[i])
+                s += str(valueCount[i])
+            return s
+        
+        @cache
+        def f(n):
+            if n == 1:
+                return '1'
+            else:
+                return countNum(f(n-1))
+
+        return f(n)
