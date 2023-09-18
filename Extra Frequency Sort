@@ -1,0 +1,6 @@
+import collections
+
+def itemsSort(items):
+    numCount = collections.Counter(items)
+    newList = sorted(items, key = lambda x: (numCount[x], x))
+    return newList
