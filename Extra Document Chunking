@@ -1,0 +1,5 @@
+def minimumsChunksRequired(totalPackets, uploadedPackets):
+    remainder = totalPackets - uploadedPackets
+    num = bin(remainder)[2:] # num is a string
+    numCount  = collections.Counter(num)
+    return numCount['1']
