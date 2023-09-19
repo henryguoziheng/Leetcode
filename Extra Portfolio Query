@@ -1,0 +1,19 @@
+from collections import defaultdict
+
+def getNetProfit(events):
+    # Write your code here
+    myDict = defaultdict(int)
+    newRet = []
+    profit = 0
+    for event in events:
+        action = event.split(' ')[0]
+        if action == 'BUY':
+            myDict[event.split(' ')[1]] += int(event.split(' ')[2])
+        if action == 'SELL':
+            myDict[event.split(' ')[1]] -= int(event.split(' ')[2])
+        if action == 'CHANGE':
+            print (myDict[event.split(' ')[1]])
+            profit += myDict[event.split(' ')[1]] * int(event.split(' ')[2]) 
+        if action == 'QUERY':
+            newRet.append(profit)
+    return newRet
