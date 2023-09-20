@@ -1,0 +1,12 @@
+# Longest Subarray
+def maxLength(nums, k):
+    p = 0
+    tempVal = 0
+    maxLength = 0
+    for i in range(len(nums)):
+        tempVal += nums[i]
+        while tempVal > k:
+            tempVal -= nums[p]
+            p += 1
+        maxLength = max(maxLength, i - p + 1)
+    return maxLength
