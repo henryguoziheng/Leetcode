@@ -1,0 +1,20 @@
+# Plus Mult Array
+def plusMult(A):
+    R_odd = A[1]
+    R_even = A[0]
+    for i in range(2, len(A)):
+        if i % 4 == 2:
+            R_even = R_even * A[i]
+        if i % 4 == 3:
+            R_odd = R_odd * A[i]
+        if i % 4 == 0:
+            R_even = R_even + A[i]
+        if i % 4 == 1:
+            R_odd = R_odd + A[i]
+
+    if R_odd % 2 > R_even % 2:
+        return 'ODD'
+    if R_odd % 2< R_even % 2:
+        return 'EVEN'
+    if R_odd % 2 == R_even % 2:
+        return 'NEUTRAL'
