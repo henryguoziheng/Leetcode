@@ -1,0 +1,27 @@
+# minimum chair
+def minChair(l):
+    # l is a list of strings
+    def chairRequirement(s):
+        totalChair = 0
+        freeChair = 0
+        for i in range(len(s)):
+            if s[i] == 'C':
+                if freeChair >= 1:
+                    freeChair -= 1
+                else:
+                    totalChair += 1
+            if s[i] == 'R':
+                freeChair += 1
+            if s[i] == 'U':
+                if freeChair >= 1:
+                    freeChair -= 1
+                else:
+                    totalChair += 1
+            if s[i] == 'L':
+                freeChair += 1
+        return totalChair
+    
+    ans = []
+    for sim in l:
+        ans.append(chairRequirement(sim))
+    return ans
