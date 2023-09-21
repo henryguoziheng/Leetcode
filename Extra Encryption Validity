@@ -1,0 +1,19 @@
+# Encryption Validity
+def encrypVal(instructionCount, validityPeriod, keys):
+    # keys is a list of integers
+    crackLim = instructionCount * validityPeriod
+
+    maxCount = 0
+    for val in keys:
+        divCount = 0
+        for d in keys:
+            if val % d == 0:
+                divCount += 1
+        maxCount = max(maxCount, divCount)
+
+    maxCount = maxCount * 100000
+
+    if maxCount > crackLim:
+        return [0, maxCount]
+    if maxCount <= crackLim:
+        return [1, maxCount]
