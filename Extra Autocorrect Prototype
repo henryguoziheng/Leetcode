@@ -1,0 +1,17 @@
+# Autocorrect Prototype
+import collections
+
+def getSearchResult(words, queries):
+    quDict = collections.defaultdict(list)
+
+    queryUpdate = []
+    for q in queries:
+        queryUpdate.append(sorted(q))
+
+    for word in words:
+        if sorted(word) in queryUpdate:
+            quDict[''.join(sorted(word))].append(word)
+
+    ans = sorted(quDict.values())
+
+    return ans
