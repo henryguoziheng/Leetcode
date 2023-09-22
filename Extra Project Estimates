@@ -1,0 +1,15 @@
+# Project Estimates
+def countPairs(projCosts, target):
+
+    ans = []
+    seen = set()
+    for val in projCosts:
+        if val - target in seen:
+            ans.append([val - target, val])
+        if target - val in seen:
+            ans.append([target - val, val])
+
+        seen.add(val)
+    return ans
+
+print (countPairs([1,3,5], 2))
