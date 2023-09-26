@@ -1,0 +1,16 @@
+# Is possible
+def isPossible(a, b, c, d):
+    dp = [[0] * (d + 1) for kk in range(c + 1)]
+    dp[a][b] = 1
+
+    for i in range(a, c + 1):
+        for j in range(b, d + 1):
+            if dp[i][j] == 1:
+                if i + j <= c:
+                    dp[i + j][j] = 1
+                if i + j <= d:
+                    dp[i][i + j] = 1
+    return 1 if dp[c][d] else 0
+
+
+#print (isPossible(1,1,5,22))
