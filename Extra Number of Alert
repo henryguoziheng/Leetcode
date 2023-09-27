@@ -1,0 +1,13 @@
+def numberOfAlerts(precedingMinutes, alertThreshold, numCalls):
+    # Write your code here
+    alertNum = 0
+    windowSum = sum(numCalls[0: precedingMinutes])
+    for i in range(precedingMinutes - 1, len(numCalls)):
+        # windowSum = sum(numCalls[i - (precedingMinutes - 1) : i + 1])
+        if windowSum / precedingMinutes > alertThreshold:
+            alertNum += 1
+        if i != len(numCalls) - 1:
+            #print (i)
+            windowSum = windowSum + numCalls[i + 1] - numCalls[i - precedingMinutes + 1]
+
+    return alertNum
