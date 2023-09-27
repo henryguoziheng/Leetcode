@@ -1,0 +1,25 @@
+import random
+def simulate():
+    vector = [0, 0]
+    equal_count = 0
+
+    while vector[0] < 7 and vector[1] < 7:
+        choice = random.choice([0, 1])  # 0 represents updating the first entry, 1 for the second
+        if choice == 0:
+            vector[0] += 1
+        else:
+            vector[1] += 1
+
+        if vector[0] == vector[1]:
+            equal_count += 1
+
+    return equal_count
+
+totalTestNum = 1000000
+n = 0
+tieNum = 0
+while n < totalTestNum:
+    tieNum += simulate()
+    n += 1
+
+print (tieNum/n)
