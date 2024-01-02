@@ -1,0 +1,24 @@
+# Better Compression
+from collections import defaultdict
+
+def BetterCompression(s):
+    dict = defaultdict(int)
+    j = 0
+    for i in range(1, len(s)):
+        if not s[i].isdigit():
+            dict[s[j]] += int(s[j + 1 : i])
+            j = i
+        if i == len(s) - 1:
+            dict[s[j]] += int(s[j + 1 : i + 1])
+
+    my_dict = {i: dict[i] for i in sorted(list(dict.keys()))}
+
+    output = ''
+    for j in range(len(my_dict)):
+        output += str(list(my_dict.keys())[j])
+        output += str(my_dict[list(my_dict.keys())[j]])
+
+    return output
+
+s = 'a12b56c18a88z189a1b11c1990'
+print (BetterCompression(s))
