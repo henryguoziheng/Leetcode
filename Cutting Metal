@@ -1,0 +1,42 @@
+# Cutting Metal
+def maxProfit(cost_per_cut, metal_price, lengths):
+    profit = 0
+
+    for cuttingLen in range(1, max(lengths)+1):
+        Num = []
+        Time = []
+        for rodLen in lengths:
+            Num.append(rodLen // cuttingLen)
+            if rodLen % cuttingLen == 0:
+                Time.append(rodLen // cuttingLen - 1)
+            else:
+                Time.append(rodLen // cuttingLen)
+
+        totalNum = sum(Num)
+        cuttingTimes = sum(Time)
+
+        tempProfit = cuttingLen * metal_price * totalNum - cost_per_cut * cuttingTimes
+        profit = max(profit, tempProfit)
+
+    return profit
+
+cost_per_cut, metal_price, lengths = 1, 10, [30, 59, 110]
+print (maxProfit(cost_per_cut, metal_price, lengths))
+
+# def maxProfit(self, costPerCut, salePrice, lengths):
+#     profit, max_len = 0, 0
+#     for length in lengths:
+#         max_len = max(max_len, length)
+#
+#     for i in range(1, max_len + 1):
+#         cut, pieces = 0, 0
+#         for length in lengths:
+#             cur_cut = (length - 1) // i
+#             cur_piece = length // i
+#             if i * salePrice * cur_piece - costPerCut * cur_cut > 0:
+#                 cut += cur_cut
+#                 pieces += cur_piece
+#
+#         profit = max(profit, i * salePrice * pieces - costPerCut * cut)
+#
+#     return profit
