@@ -1,0 +1,19 @@
+# Product of Maximum and Minimum in a Dataset
+def maxMin(operations, x):
+    # operation is [string1, string2, ...]
+    # x is [int1, int2, ...]
+
+    s = set()
+    res = []
+    for i in range(len(x)):
+        if operations[i] == 'push':
+            s.add(x[i])
+        if operations[i] == 'pop':
+            s.remove(x[i])
+        res.append(max(s) * min(s))
+
+    return res
+
+operations  = ['push', 'push', 'push', 'pop' ]
+x = [1,2,3,1]
+print (maxMin(operations, x))
