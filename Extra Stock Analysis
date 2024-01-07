@@ -1,0 +1,15 @@
+# Stock Analysis
+
+# !!! not sure if I understand problem correctly !!!
+
+def computeParameterValue(sources):
+    myDict = {}
+    for s in sources:
+        for op in s.split(' '):
+            parameter = op.split(':')[0]
+            val = op.split(':')[1]
+            myDict[parameter] = val
+    return list(myDict.values())
+
+sources = ['P1:a P3:b P5:x', 'P1:b P2:q P5:x']
+print (computeParameterValue(sources))
