@@ -1,0 +1,9 @@
+# Preprocess Dates
+def reformatDate(date: str) -> str:
+    l = date.split(' ')
+    myDict = {'Jan': '01', 'Feb': '02', "Mar": '03', "Apr":'04', "May":'05', "Jun":'06', "Jul":'07', "Aug":'08', "Sep":'09', "Oct":'10', "Nov":'11', "Dec":'12'}
+
+    return l[-1] + '-' + myDict[l[1]] + '-' + l[0][0:-2].zfill(2)
+
+date = '7th Apr 1904'
+print (reformatDate(date))
