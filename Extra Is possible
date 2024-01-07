@@ -1,0 +1,17 @@
+
+# !!! Correct but Leetcode time exceed !!!
+
+def reachingPoints(sx: int, sy: int, tx: int, ty: int) -> bool:
+    if sx == tx and sy == ty:
+        return True
+    else:
+        while tx >= sx and ty >= sy:
+            if tx >= ty:
+                tx -= ty
+            else:
+                ty -= tx
+            
+            if sx == tx and sy == ty:
+                return True
+                break
+    return False
