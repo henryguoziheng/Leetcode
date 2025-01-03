@@ -1,0 +1,14 @@
+from collections import defaultdict
+
+class Solution:
+    def highFive(self, items: List[List[int]]) -> List[List[int]]:
+        dict = defaultdict(list)
+        for val in items:
+            dict[val[0]].append(val[1])
+        
+        res = []
+        for key in dict.keys():
+            topAve = sum(sorted(dict[key])[-5:]) // 5
+            res.append([key, topAve])
+        
+        return sorted(res, key = lambda x: x[0])
