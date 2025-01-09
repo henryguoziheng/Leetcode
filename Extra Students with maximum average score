@@ -1,0 +1,13 @@
+from collections import defaultdict
+def height_average_score(arr):
+    N = len(arr)
+    dict = defaultdict(int)
+    for l in arr:
+        for i in range(1, len(l)):
+            dict[l[0]] += int(l[i])
+        dict[l[0]] = dict[l[0]]/len(l[1:])
+    
+    return max(dict, key = dict.get)
+
+arr = [["Shrikanth", "20", "30", "10"], ["Ram", "100", "50", "10"]]
+height_average_score(arr)
