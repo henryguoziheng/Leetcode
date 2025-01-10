@@ -1,0 +1,24 @@
+class Solution:
+    def fractionToDecimal(self, numerator: int, denominator: int) -> str:
+        remainder = numerator % denominator
+        integer = str(numerator // denominator)
+
+        dict = {}
+        fraction = []
+        decimal = ''
+
+        if remainder == 0:
+            return integer 
+        
+        while remainder != 0:
+            if remainder in dict:
+                fraction.insert(dict[remainder], '(')
+                fraction.append(')')
+                break
+
+            dict[remainder] = len(fraction)
+            remainder *= 10
+            fraction.append(str(remainder // denominator))
+            remainder = remainder % denominator
+        
+        return  integer + '.' + ''.join(fraction)
