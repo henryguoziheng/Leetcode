@@ -1,0 +1,19 @@
+class Solution:
+    def isRobotBounded(self, instructions: str) -> bool:
+        pos = [0, 0]
+        direction = [[0, 1], [-1, 0], [0, -1], [1, 0]]
+        s = 0
+        
+        for d in instructions:
+            if d == 'G':
+                pos = [pos[i] + direction[s][i] for i in range(2)]
+            if d == 'L':
+                s = (s + 1) % len(direction)
+            if d == 'R':
+                s = (s - 1) % len(direction)
+        
+        if s != 0:
+            return True
+        if pos[0] == 0 and pos[1] == 0:
+            return True
+        return False
